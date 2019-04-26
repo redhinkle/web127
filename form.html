@@ -1,0 +1,82 @@
+<html>
+    <head>
+
+    </head>
+    <body>
+        <h1>Service Form</h1>
+        <p>This form will provide me with a guideline understanding of your needs, please fill out the form to the best of your ability.</p>
+        <p>Once submitted I will contact you to schedule a meeting to get a more detailed understanding of your needs.</p>
+        <p>* = required information</p>
+<!-- SERVICE FORM START -->
+        <form id="service_form" action="submissions.php" method="post">
+            <fieldset>
+                <!--Personal Info  -->
+                <legend>Personal Information</legend>
+                <!-- Name -->
+                <label for="name">Name:* </label>
+                <input type="text" id="name" value="Name" name="name" required>
+                <!-- Email -->
+                <label for="email">E-Mail:* </label>
+                <input type="email" id="email" value="You@Example.com" name="email" required><br/>
+                <!-- Phone -->
+                <label for="phone">Phone: </label>
+                <input type="tel" id="phone" value="(888) 555-5555" name="phone">
+                <!-- ZIP -->
+                <label for="zip">Zip Code:* </label>
+                <input type="address" id="zip" value="90210" name="zip" required><p id="zipline"></p><br/>
+            </fieldset>
+            <fieldset>
+            <legend>Service Type</legend>
+                <p>Please select a type of service:<br/>
+                <!-- Event -->
+                <input type="radio" id="event" value="Events" name="event" checked><label for="event">Events</label>
+                <!-- Personal -->
+                <input type="radio" id="meals" value="Meal Prep" name="meals"><label for="meals">Meal Prep</label>
+                <!-- Lesson -->
+                <input type="radio" id="lessons" value="Cooking Lessons" name="lessons"><label for="lessons">Cooking Lessons</label>
+                </p>
+                <p>Please add some details of the service you require:</p>
+                <textarea id="comments" name="comments" cols="30" rows="4">Event type, number of guests, type of lesson, etc...</textarea>
+            </fieldset>
+            <fieldset>
+                <legend>Personal Preferences</legend>
+                <p>What type of cuisine do you wish to have?</p>
+                <textarea name="comments" cols="30" rows="4">American, Asian, Mediterranean, Latin, etc...</textarea>
+                <br/>
+                <p>Do you have any dietary restrictions or allergies?</p>
+                <textarea name="comments" cols="30" rows="4">Vegan, Gluten-free, No Dairy, etc...</textarea>
+                <br/>
+            </fieldset>
+            <fieldset>
+            <legend>Additional Information</legend>
+            <p>Will you provide me access to your kitchen?</p>
+            <!-- Event -->
+            <input type="radio" id="yes" value="Yes" name="yes" checked><label for="yes">Yes</label>
+            <!-- Personal -->
+            <input type="radio" id="no" value="no" name="no"><label for="no">No</label>
+            <p>Anything else I should know?</p>
+            <textarea id="comments" name="comments" cols="30" rows="4">Inspired recipes, family-style servings, premium ingredients, etc... </textarea>
+        </fieldset>
+        <button type="submit" id="form_button" onsubmit="event.preventDefault(); zipvalid()">Submit Request</button>
+        </form>
+       
+       
+       <script type="text/javascript">
+        function zipValid(){
+            var x, text;
+            // get value of "zip" field
+            x = document.getElementById("zip").value;
+            
+            if(isNaN(x) || x < 10000 || x >99999){
+                text = "Please enter a valid zip code.";
+                returnToPreviousPage();
+                return false;
+            }
+            document.getElementById("zipline").innerHTML = text;
+        }
+            
+        
+        
+        </script>
+    </body>
+</html>
